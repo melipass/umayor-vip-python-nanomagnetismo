@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 # Ejercicio 2 Semana 7
 """
 Construir una función que convierta kilómetros en millas y otra que
@@ -8,9 +8,11 @@ import requests
 
 def ConvertirEURaUSD(valorEnEuro):
     #API key en https://www.alphavantage.co/support/#api-key
-    api_file = open("D:\\Universidad\\S08 - 2020\\VIP\\api_key_alphavantage_co.txt", 'r')
-    api_key = str(api_file.read()) #obtener del link arriba
-    api_file.close()
+	#Para leer desde archivo local:
+    #api_file = open("D:\\Universidad\\S08 - 2020\\VIP\\api_key_alphavantage_co.txt", 'r')
+    #api_key = str(api_file.read()) #obtener del link arriba
+    #api_file.close()
+    api_key = ""
     url = (r"https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE"
         "&from_currency=EUR&to_currency=USD&apikey=" + api_key)
     solicitud = requests.get(url)
