@@ -37,9 +37,13 @@ Devuelve:
     \end{bmatrix}
 """
 
+np.array([[65E-1,77.5642,3.322],
+		[5.17,10E-2,3],
+		[7.1,1.91123,53.3224]])
+
 vec3=np.array([[65E-1,77.5642,3.322],
                [5.17,10E-2,3],
-               [7.1,1.91123,53.322224]])
+               [7.1,1.91123,53.3224]])
 print("\nPor último, un vector 3x3 con decimales:")
 ImprimirLaTeX(vec3)
 """
