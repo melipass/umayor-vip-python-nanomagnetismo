@@ -12,7 +12,7 @@ radius = 150
 paint_y = int(height/2)
 
 fourcc = VideoWriter_fourcc(*'MP42')
-video = VideoWriter('./noise.avi', fourcc, float(FPS), (width, height))
+video = VideoWriter('./video.avi', fourcc, float(FPS), (width, height))
 font = cv2.FONT_HERSHEY_DUPLEX
 
 frame = np.zeros([height, width, 3],
