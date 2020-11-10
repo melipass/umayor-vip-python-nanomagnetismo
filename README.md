@@ -1,3 +1,5 @@
+![Universidad Mayor and Vertically Integrated Projects logo](umayor-vip-header.png)
+
 # umayor-vip-python-nanomagnetismo
 
 ## About this repo
