@@ -1,36 +1,63 @@
 import bpy, bmesh, random
 
-number_of_spins = 10
-electron_radius = 5
-distance_between_spins = 2
+"""
+So far, by writing this code, I have seen the following hierarchy:
+    context -> window -> scene -> collection -> objects -> meshes
+"""
 
-# Método para poblar el espacio de trabajo de Blender con objetos que representan spins, posicionados en 1D.
-def CreateSpinsArray():
-    # Borro objetos ya existentes (en caso de cargar este script en nuevo entorno)
-    bpy.ops.object.select_all(action="SELECT")
-    bpy.ops.object.delete()
-    
-    # Importo el OBJ flecha y le asigno nombre
-   # bpy.ops.import_scene.obj(filepath=r"D:\Universidad\S08 - 2020\VIP\Blender\arrow.obj")
-   # bpy.context.selected_objects[0].name = 'Arrow'
-   # bpy.context.selected_objects[0].data.name = 'Arrow'
-   # bpy.context.selected_objects[0].modifier_add(type='ARRAY')
-   
-   # Creo un array de esferas que representará el electron.
-   # Al ser un array, cada esfera compartirá parámetros
-    bpy.ops.mesh.primitive_uv_sphere_add(scale=(electron_radius,electron_radius,electron_radius))
-    bpy.ops.object.modifier_add(type='ARRAY')
-    bpy.ops.object.shade_smooth()
-    bpy.data.objects["Sphere"].modifiers["Array"].count = number_of_spins
-    bpy.context.object.modifiers["Array"].relative_offset_displace[0] = distance_between_spins
-    
-    # Creo una colección de cilindros que representarán la flecha del spin.
-	# Al ser instanciados de a uno  y movidos a una colección, cada cilindro tendrá sus parámetros propios.
-    bpy.ops.mesh.primitive_cylinder_add(scale=(electron_radius*.1, electron_radius*.1, electron_radius*1.5))
-    bpy.ops.object.move_to_collection(collection_index=2)
-    for i in range(number_of_spins-1):
-        bpy.ops.object.duplicate_move(TRANSFORM_OT_translate={"value":(distance_between_spins * electron_radius,0,0)})
-        bpy.ops.object.shade_smooth()
-        bpy.ops.object.move_to_collection(collection_index=2)
+# shorten text to work with
+scene = bpy.context.window.scene
+object = bpy.ops.object
+collections = bpy.data.collections
 
-CreateSpinsArray()
+# variables
+spins = [5,0,0] # number of spins
+er = 5 # electron radius
+dbs = 2 # distance between spins
+arrow_path = bpy.path.abspath("//arrow.obj") # file location relative to the .blend project folder
+
+def ClearScene():
+    object.select_all(action="SELECT")
+    object.delete()
+    for c in scene.collection.children:
+        scene.collection.children.unlink(c)
+    for c in bpy.data.collections:
+        if not c.users:
+            bpy.data.collections.remove(c)
+
+def ObjectDuplicatorX(col_name):
+    # keys() method returns an array with the names of all collections in the scene
+    col_index = collections.keys().index(col_name)
+    object.move_to_collection(collection_index=col_index)
+    for i in range(spins[0]-1):
+        object.duplicate_move(TRANSFORM_OT_translate={"value":(dbs * er,0,0)})
+        object.move_to_collection(collection_index=col_index)
+
+def Create1DSpinsArray():
+    # Electron sphere object(s) generation
+    current_collection = collections.new(name="Electrons") # creating a collection
+    scene.collection.children.link(current_collection) # adding it to the scene
+    bpy.ops.mesh.primitive_uv_sphere_add(scale=(er,er,er)) # creating sphere
+    object.shade_smooth()
+    ObjectDuplicatorX(current_collection.name)
+    
+    # Spin arrow object(s) generation
+    current_collection = collections.new(name="Spin Arrows")
+    scene.collection.children.link(current_collection)
+    bpy.ops.import_scene.obj(filepath=arrow_path)
+    bpy.ops.transform.resize(value=(1.0, 1.0, er/3))
+    object.shade_smooth()
+    ObjectDuplicatorX("Spin Arrows")
+
+ClearScene()
+Create1DSpinsArray()
+
+# Yet to code:
+#def ObjectDuplicatorY(collection_name):
+#    for o in collections[collection_name].objects:
+#        o.select_set(True)
+#    
+#def Create2DSpinsArray():
+#    Create1DSpinsArray()
+#    ObjectDuplicatorY("Electrons")
+#    ObjectDuplicatorY("Spin Arrows")
