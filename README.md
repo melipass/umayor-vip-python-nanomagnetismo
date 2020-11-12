@@ -10,8 +10,10 @@ To make the code work within a Blender project, you have to store the Python fil
 ```python
 import bpy
 import os
+import sys
 
-# Replace [FILENAME] with the file you want to run
+sys.path.append(bpy.path.abspath("//"))
+# Replace [FILENAME] with the file you want to run:
 filename = os.path.join(os.path.dirname(bpy.data.filepath), "[FILENAME].py") 
 exec(compile(open(filename).read(), filename, 'exec'))
 ```
@@ -24,8 +26,10 @@ Para hacer que el código funcione dentro de un proyecto de Blender, debes almac
 ```python
 import bpy
 import os
+import sys
 
-# Cambia [FILENAME] por el nombre del archivo que quieres correr
+sys.path.append(bpy.path.abspath("//"))
+# Cambia [FILENAME] por el nombre del archivo que quieres correr:
 filename = os.path.join(os.path.dirname(bpy.data.filepath), "[FILENAME].py") 
 exec(compile(open(filename).read(), filename, 'exec'))
 ```
