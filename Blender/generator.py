@@ -29,6 +29,26 @@ class Generator():
             bobject.duplicate_move(TRANSFORM_OT_translate={"value":(self.dbs * self.er,0,0)})
             bobject.move_to_collection(collection_index=col_index)
 
+    def ObjectDuplicatorY(self, col_name):
+        bobject.select_all(action="DESELECT")
+        for o in collections[col_name].objects:
+            o.select_set(True)
+        col_index = collections.keys().index(col_name)
+        for i in range(self.spins[1]-1):
+            i=i
+            bobject.duplicate_move(TRANSFORM_OT_translate={"value":(0, self.dbs * self.er,0)})
+            bobject.move_to_collection(collection_index=col_index)
+
+    def ObjectDuplicatorZ(self, col_name):
+        bobject.select_all(action="DESELECT")
+        for o in collections[col_name].objects:
+            o.select_set(True)
+        col_index = collections.keys().index(col_name)
+        for i in range(self.spins[2]-1):
+            i=i
+            bobject.duplicate_move(TRANSFORM_OT_translate={"value":(0, 0, self.dbs * self.er)})
+            bobject.move_to_collection(collection_index=col_index)
+
     def Create1DSpinsArray(self):
         # Electron sphere object(s) generation
         current_collection = collections.new(name="Electrons") # creating a collection
@@ -45,13 +65,13 @@ class Generator():
         bobject.shade_smooth()
         self.ObjectDuplicatorX("Spin Arrows")
 
-'''
-    def ObjectDuplicatorY(collection_name):
-        for o in collections[collection_name].objects:
-            o.select_set(True)
+    def Create2DSpinsArray(self):
+        self.Create1DSpinsArray()
+        self.ObjectDuplicatorY("Electrons")
+        self.ObjectDuplicatorY("Spin Arrows")
+
+    def Create3DSpinsArray(self):
+        self.Create2DSpinsArray()
+        self.ObjectDuplicatorZ("Electrons")
+        self.ObjectDuplicatorZ("Spin Arrows")
         
-    def Create2DSpinsArray():
-        Create1DSpinsArray()
-        ObjectDuplicatorY("Electrons")
-        ObjectDuplicatorY("Spin Arrows")
-'''
