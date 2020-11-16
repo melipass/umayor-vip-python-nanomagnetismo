@@ -8,7 +8,7 @@ So far, by writing this code, I have seen the following hierarchy:
 """
 
 # variables
-spins = [10,10,1] # spin rows per axis (x,y,z)
+spins = [5,5,1] # spin rows per axis (x,y,z)
 er = 5 # electron radius
 dbs = 3 # distance between spins
 
@@ -24,7 +24,7 @@ op = tensor_operators.TensorOperators(spins)
 # scene set-up
 
 #op.Ferromagnetism(1)
-#op.Antiferromagnetism(0)
-op.Paramagnetism()
+op.Antiferromagnetism(1)
+#op.Paramagnetism()
 
 rot.CollectionRotatorX(op.spins_tensor)

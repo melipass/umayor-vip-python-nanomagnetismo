@@ -20,13 +20,11 @@ class TensorOperators():
         i = 0
         if spin_direction == 1:
             i = 1
-        for x in range(self.spins_array[0]):
+        for z in range(self.spins_array[2]):
             for y in range(self.spins_array[1]):
-                for z in range(self.spins_array[2]):
+                for x in range(self.spins_array[0]):
                     self.spins_tensor[x,y,z] = (i%2)
                     i += 1
-                i += 1
-            i += 1
 
     def Paramagnetism(self):
         random.seed()
