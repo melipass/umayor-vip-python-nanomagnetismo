@@ -10,7 +10,7 @@ So far, by writing this code, I have seen the following hierarchy:
 # variables
 spins = [5,5,1] # spin rows per axis (x,y,z)
 er = 5 # electron radius
-dbs = 3 # distance between spins
+dbs = 7 # distance between spins
 
 # classes
 gen = generator.Generator(spins,er,dbs)
@@ -23,8 +23,9 @@ op = tensor_operators.TensorOperators(spins)
 
 # scene set-up
 
-#op.Ferromagnetism(1)
-op.Antiferromagnetism(1)
+op.Ferromagnetism(np.pi/2)
+#op.Antiferromagnetism(np.pi)
 #op.Paramagnetism()
 
-rot.CollectionRotatorX(op.spins_tensor)
+rot.CollectionRotator(op.spins_tensor,"X")
+#rot.CollectionRotator(op.spins_tensor,"Y")

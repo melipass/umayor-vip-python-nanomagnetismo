@@ -13,7 +13,7 @@ class Rotator():
         bobject.select_all(action="DESELECT")
         self.value_list = []
     
-    def CollectionRotatorX(self,tensor):
+    def CollectionRotator(self,tensor,axis):
         for x in np.nditer(tensor, order="C"):
             self.value_list.append(x)
             print(x)
@@ -21,12 +21,16 @@ class Rotator():
         for o in collections["Spin Arrows"].objects:
             bobject.select_all(action="DESELECT")
             print(self.value_list[i])
+            o.select_set(True)
+            transform.rotate(value=self.value_list[i],orient_axis=axis)
+            '''
             if self.value_list[i] == 1.0:
                 o.select_set(True)
-                transform.rotate(value=-3.14, orient_axis='X')
+                transform.rotate(value=-3.14, orient_axis=axis)
             if self.value_list[i] == 0.0:
                 o.select_set(True)
-                transform.rotate(value=2*3.14, orient_axis='X')
+                transform.rotate(value=2*3.14, orient_axis=axis)
+            '''
             i += 1
              
 

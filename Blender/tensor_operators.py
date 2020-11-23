@@ -1,5 +1,6 @@
 import numpy as np
 import random
+import decimal
 
 # I may implement Qiskit's Bloch sphere in order to get non-binary positions
 
@@ -18,12 +19,13 @@ class TensorOperators():
     
     def Antiferromagnetism(self,spin_direction):
         i = 0
-        if spin_direction == 1:
-            i = 1
         for z in range(self.spins_array[2]):
             for y in range(self.spins_array[1]):
                 for x in range(self.spins_array[0]):
-                    self.spins_tensor[x,y,z] = (i%2)
+                    if (i%2 == 0):
+                        self.spins_tensor[x,y,z] = spin_direction
+                    else:
+                        self.spins_tensor[x,y,z] = spin_direction+np.pi
                     i += 1
 
     def Paramagnetism(self):
@@ -31,4 +33,4 @@ class TensorOperators():
         for x in range(self.spins_array[0]):
             for y in range(self.spins_array[1]):
                 for z in range(self.spins_array[2]):
-                    self.spins_tensor[x,y,z] = random.choice([0,1])
+                    self.spins_tensor[x,y,z] = random.uniform(0,2*np.pi)
