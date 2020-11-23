@@ -2,8 +2,6 @@ import numpy as np
 import random
 import decimal
 
-# I may implement Qiskit's Bloch sphere in order to get non-binary positions
-
 class TensorOperators():
     def __init__(self,spins_array):
         self.spins_array = spins_array

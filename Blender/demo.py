@@ -23,9 +23,9 @@ op = tensor_operators.TensorOperators(spins)
 
 # scene set-up
 
-op.Ferromagnetism(np.pi/2)
+#op.Ferromagnetism(np.pi)
 #op.Antiferromagnetism(np.pi)
-#op.Paramagnetism()
+op.Paramagnetism()
 
-rot.CollectionRotator(op.spins_tensor,"X")
-#rot.CollectionRotator(op.spins_tensor,"Y")
+#rot.CollectionRotator(op.spins_tensor,"X",np.pi/2)
+rot.CollectionRotator(op.spins_tensor,"Y",np.pi/2)
