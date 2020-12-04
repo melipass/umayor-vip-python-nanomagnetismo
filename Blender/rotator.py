@@ -24,13 +24,13 @@ class Rotator():
             o.select_set(True)
             transform.rotate(value=self.value_list[i],orient_axis=axis)
             if np.sin(self.value_list[i] + phase_shift) > 0:
-                red = 1*np.sin(self.value_list[i] + phase_shift)+0.01
+                red = np.sin(self.value_list[i] + phase_shift)+0.01
                 blue = 0
-                green = 0
+                green = 0#np.cos(np.abs((self.value_list[i] + phase_shift)+np.pi/2))*0.1
             else:
-                blue = 1*-np.sin(self.value_list[i] + phase_shift)+0.01
+                blue = -np.sin(self.value_list[i] + phase_shift)+0.01
                 red = 0
-                green = 0
+                green = 0#np.cos(np.abs((self.value_list[i] + phase_shift)+np.pi/2))*0.1
             self.SpinRotationMaterial(o,"Spin color " + str(i),red,green,blue)
             bpy.ops.object.select_all(action="DESELECT")
             i += 1

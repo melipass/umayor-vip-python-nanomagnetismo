@@ -61,7 +61,7 @@ class Generator():
         current_collection = collections.new(name="Spin Arrows")
         scene.collection.children.link(current_collection)
         bpy.ops.import_scene.obj(filepath=bpy.path.abspath("//arrow.obj"))
-        bpy.ops.transform.resize(value=(1.0, 1.0, self.er/3))
+        bpy.ops.transform.resize(value=(1.0, 1.0, self.er/2))
         bobject.shade_smooth()
         self.ObjectDuplicatorX("Spin Arrows")
 
