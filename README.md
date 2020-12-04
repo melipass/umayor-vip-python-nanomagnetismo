@@ -4,6 +4,7 @@
 <p align="center">
 <img src="Blender/paramagnetism.png" width="70%">
 </p>
+
 ## About this repo
 This repository contains Python code I wrote during Universidad Mayor's Vertically Integrated Project **Python animations for applications in nanomagnetism**. [Read more](https://cib.umayor.cl/en/news/vip-projects-the-tool-that-fosters-the-link-between-undergraduate-and-research-carried-out-in-the-u-mayor).
 Keep in mind that this is in an early development stage.
