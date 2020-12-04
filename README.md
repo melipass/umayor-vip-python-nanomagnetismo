@@ -2,6 +2,8 @@
 
 # umayor-vip-python-nanomagnetismo
 
+![Paramagnetism image rendered using our code](Blender/paramagnetism.png)
+
 ## About this repo
 This repository contains Python code I wrote during Universidad Mayor's Vertically Integrated Project **Python animations for applications in nanomagnetism**. [Read more](https://cib.umayor.cl/en/news/vip-projects-the-tool-that-fosters-the-link-between-undergraduate-and-research-carried-out-in-the-u-mayor).
 Some comments within the code are written in Spanish.
