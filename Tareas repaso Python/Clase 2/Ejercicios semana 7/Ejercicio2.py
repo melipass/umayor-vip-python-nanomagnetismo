@@ -42,3 +42,5 @@ try:
         raise Exception
 except:
     print("El valor ingresado es incorrecto. Vuelva a intentarlo.")
+
+input("")
