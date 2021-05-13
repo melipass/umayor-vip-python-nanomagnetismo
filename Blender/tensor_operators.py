@@ -38,3 +38,19 @@ class TensorOperators():
             for y in range(self.spins_array[1]):
                 for z in range(self.spins_array[2]):
                     self.spins_tensor[x,y,z] = random.uniform(0,2*np.pi)
+
+
+    def OperationMatrix(self, spin_direction):
+        M  = np.matrix(spin_direction)
+
+        vec_1 = np.array([-1,0,1])
+        vec_2 = np.array([-2,0,2])
+        vec_3 = np.array([-3,0,3])
+
+        for x in range(self.spins_array[0]):
+          for y in range(self.spins_array[1]):
+                for z in range(self.spins_array[2]):
+                   
+                        if(vec_1.dot(M)):
+                            self.spins_tensor[x,y,z] = spin_direction
+    
