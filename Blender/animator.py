@@ -14,3 +14,6 @@ class Animator():
 
     def SimpleAnimation(first_state, second_state, delta_time, delay):
         rotator()
+
+"""    def ClearKeyframes():
+        """

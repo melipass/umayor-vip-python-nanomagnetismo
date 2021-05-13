@@ -7,7 +7,7 @@ import tensor_operators, generator, rotator
 """
 
 # variables
-spins = [5,2,1] # spin rows per axis (x,y,z)
+spins = [5,1,1] # spin rows per axis (x,y,z)
 er = 3 # electron radius
 dbs = 6 # distance between spins
 
@@ -24,19 +24,46 @@ op = tensor_operators.TensorOperators(spins)
 arrows = bpy.data.collections["Spin Arrows"].objects
 
 op.Paramagnetism()
-rot.CollectionRotator(op.spins_tensor,"X",np.pi/2)
+rot.SpinsRotator(op.spins_tensor,"z",0)
 for arrow in arrows:
     arrow.keyframe_insert(data_path = "rotation_euler", frame = 10)
-    color_node = arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0]
+    #color_node = arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0]
+    #color_node.default_value = (0,1,0,1)
+    arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0].keyframe_insert(data_path="default_value", frame = 10)
+    #node_tree.nodes["Principled BSDF"].inputs[0].default_value
+
+    #color_node.keyframe_insert(data_path="default_value", frame = 10)
+"""    color_node = arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0]
     color_node.default_value = (0,1,0,1)
-    color_node.keyframe_insert(data_path="default_value", frame = 10)
+    color_node.keyframe_insert(data_path="default_value", frame = 10)"""
 op.Ferromagnetism(np.pi)
-rot.CollectionRotator(op.spins_tensor,"X",np.pi/2)
+rot.SpinsRotator(op.spins_tensor,"z",0)
 for arrow in arrows:
     arrow.keyframe_insert(data_path = "rotation_euler", frame = 30)
-    color_node = arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0]
+    arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0].keyframe_insert(data_path="default_value", frame = 30)
+    arrow.keyframe_insert(data_path = "rotation_euler", frame = 50)
+    arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0].keyframe_insert(data_path="default_value", frame = 50)
+op.Ferromagnetism(0)
+rot.SpinsRotator(op.spins_tensor,"z",0)
+for arrow in arrows:
+    arrow.keyframe_insert(data_path = "rotation_euler", frame = 90)
+    arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0].keyframe_insert(data_path="default_value", frame = 90)
+    arrow.keyframe_insert(data_path = "rotation_euler", frame = 110)
+    arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0].keyframe_insert(data_path="default_value", frame = 110)
+
+
+op.Paramagnetism()
+rot.SpinsRotator(op.spins_tensor,"z",0)
+for arrow in arrows:
+    arrow.keyframe_insert(data_path = "rotation_euler", frame = 150)
+    #color_node = arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0]
+    #color_node.default_value = (0,1,0,1)
+    arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0].keyframe_insert(data_path="default_value", frame = 150)
+    #color_node = arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0]
+    #color_node.keyframe_insert(data_path="default_value", frame = 30)
+"""    color_node = arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0]
     color_node.default_value = (1,0,0,1)
-    color_node.keyframe_insert(data_path="default_value", frame = 30)
+    color_node.keyframe_insert(data_path="default_value", frame = 30)"""
 
 #for arrow in arrows:
 #    arrow.keyframe_insert(data_path = "rotation_euler", frame = 10)
@@ -63,9 +90,9 @@ for arrow in arrows:
 #    arrow.keyframe_insert(data_path = "rotation_euler", frame = 80 + delay)
 #    delay = delay + 0
 
-#rot.CollectionRotator(op.spins_tensor,"X",np.pi/2)
-#rot.CollectionRotator(op.spins_tensor,"X",np.pi/2)
-#rot.CollectionRotator(op.spins_tensor,"Y",np.pi/2)
+#rot.SpinRotator(op.spins_tensor,"X",np.pi/2)
+#rot.SpinRotator(op.spins_tensor,"X",np.pi/2)
+#rot.SpinRotator(op.spins_tensor,"Y",np.pi/2)
 
 #delay = 90
 #for arrow in arrows:

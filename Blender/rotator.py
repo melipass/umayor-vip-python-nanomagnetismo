@@ -28,60 +28,89 @@ class Rotator():
         bobject.select_all(action="DESELECT")
         self.value_list = []
     
-    def CollectionRotator(self,operator,axis,phase_shift):
-        """Rotates spin arrows according to the values inside the operator array."""
+    def SpinsRotator(self,operator,axis,phase_shift):
+        """Rotates a collection of spin arrow objects according to the values inside
+        the given operator array."""
         axis = axis.lower()
-        for x in np.nditer(operator, order="C"): # np.nditer = numpy's n-dimension iterator
+        for x in np.nditer(operator, order="C"): # np.nditer is numpy's n-dimension iterator
             self.value_list.append(x)
-            print(x)
+
         i = 0
         if axis == "x":    
             for o in collections["Spin Arrows"].objects:
-                o.rotation_euler = (self.value_list[i],0.0,0.0)#+phase_shift
+                o.rotation_euler = (self.value_list[i]+phase_shift,0.0,0.0)
+                self.SpinsColor(o, 0, i)
                 i += 1
         elif axis == "y":
             for o in collections["Spin Arrows"].objects:
-                o.rotation_euler = (0.0,self.value_list[i],0.0)#+phase_shift
+                o.rotation_euler = (0.0,self.value_list[i]+phase_shift,0.0)
+                self.SpinsColor(o, 1, i)
                 i += 1
         else:
             for o in collections["Spin Arrows"].objects:
-                o.rotation_euler = (0.0,0.0,self.value_list[i])#+phase_shift
+                o.rotation_euler = (0.0,0.0,self.value_list[i]+phase_shift)
+                self.SpinsColor(o, 2, i)
                 i += 1
 
-#        for x in np.nditer(operator, order="C"):
-#            self.value_list.append(x)
-#            print(x)
-#        i = 0
-##        for o in collections["Spin Arrows"].objects:
-##            o.rotation_euler = self.value_list[i]+phase_shift
-##            i += 1
-#            bobject.select_all(action="DESELECT")
-#            #print(self.value_list[i])
-#            o.select_set(True)
-#            transform.rotate(value=self.value_list[i],orient_axis=axis)
-#            if np.sin(self.value_list[i] + phase_shift) > 0:
-#                red = np.sin(self.value_list[i] + phase_shift)+0.01
-#                blue = 0
-#                green = 0#np.cos(np.abs((self.value_list[i] + phase_shift)+np.pi/2))*0.1
-#            else:
-#                blue = -np.sin(self.value_list[i] + phase_shift)+0.01
-#                red = 0
-#                green = 0#np.cos(np.abs((self.value_list[i] + phase_shift)+np.pi/2))*0.1
-#            self.SpinRotationMaterial(o,"Spin color " + str(i),red,green,blue)
-#            bpy.ops.object.select_all(action="DESELECT")
-#            i += 1
-             
-    def SpinRotationMaterial(self, obj, material_name, r, g, b):
+    def SpinsColor(self, o, axis, i):
+        if o.rotation_euler[axis] > np.pi/2 and o.rotation_euler[axis] < 3*np.pi/2:
+            red = 1#np.sin(o.rotation_euler[axis])+0.01
+            blue = 0
+            green = 0#np.cos(np.abs((self.value_list[i] + phase_shift)+np.pi/2))*0.1
+        else:
+            blue = 1#-np.sin(o.rotation_euler[axis])+0.01
+            red = 0
+            green = 0##np.cos(np.abs((self.value_list[i] + phase_shift)+np.pi/2))*0.1
+        #color_node = o.active_material.node_tree.nodes["Principled BSDF"].inputs[0]
+        #color_node.default_value = (red,green,blue,1)
+        self.MaterialGenerator(o,"Spin color " + str(i),red,green,blue)
+        ##
+        
+        """i=0
+        for o in collections["Spin Arrows"].objects:
+            print(o.rotation_euler[0])
+            if o.rotation_euler[0] > np.pi:
+                red = 1
+                blue = 0
+                green = 0#np.cos(np.abs((self.value_list[i] + phase_shift)+np.pi/2))*0.1
+            else:
+                blue = 1
+                red = 0
+                green = 0 #np.cos(np.abs((self.value_list[i] + phase_shift)+np.pi/2))*0.1
+            self.MaterialGenerator(o,"Spin color " + str(i),red,green,blue)
+            bpy.ops.object.select_all(action="DESELECT")
+            i += 1"""
+
+    def MaterialGenerator(self, obj, material_name, r, g, b):
         material = bpy.data.materials.get(material_name)
+        if material is None:
+            material = bpy.data.materials.new(material_name)
+            #obj.active_material = material
+        material.use_nodes = True
+        principled_bsdf = material.node_tree.nodes['Principled BSDF']
+        principled_bsdf.inputs[0].default_value = (r, g, b, 1)
+        obj.active_material = material
+
+"""  material = bpy.data.materials.get(material_name)
         if material is None:
             material = bpy.data.materials.new(material_name)
         material.use_nodes = True
         principled_bsdf = material.node_tree.nodes['Principled BSDF']
         if principled_bsdf is not None:
             principled_bsdf.inputs[0].default_value = (r, g, b, 1)  
-        obj.active_material = material
+        obj.active_material = material"""
 
-    def CollectionRotatorY(self):
-        pass
-    def CollectionRotatorZ(self):
-        pass
+
+"""    def SpinsColor(self, o, axis, i):
+        if o.rotation_euler[axis] > 0:
+            red = 1#np.sin(o.rotation_euler[axis])+0.01
+            blue = 0
+            green = 0#np.cos(np.abs((self.value_list[i] + phase_shift)+np.pi/2))*0.1
+        else:
+            blue = 1#-np.sin(o.rotation_euler[axis])+0.01
+            red = 0
+            green = 0##np.cos(np.abs((self.value_list[i] + phase_shift)+np.pi/2))*0.1
+        #color_node = o.active_material.node_tree.nodes["Principled BSDF"].inputs[0]
+        #color_node.default_value = (red,green,blue,1)
+        self.MaterialGenerator(o,"Spin color " + str(i),red,green,blue)"""
+
