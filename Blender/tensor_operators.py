@@ -53,4 +53,12 @@ class TensorOperators():
                    
                         if(vec_1.dot(M)):
                             self.spins_tensor[x,y,z] = spin_direction
+                        elif(vec_2.tensor(M)):
+                            self.spins_tensor[x,y,z] = spin_direction
+                        elif (vec_3.dot(M)):
+                            self.spins_tensor[x,y,z] = spin_direction
+                        else:
+                            self.spins_tensor[x,y,z] = spin_direction 
+
+
     
