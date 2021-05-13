@@ -8,19 +8,53 @@ collections = bpy.data.collections
 transform = bpy.ops.transform
 
 class Rotator():
-    def __init__(self,spins):
-        self.spins_array = spins
+    """Takes care of rotating spin arrows.
+    
+    This class manages everything related to the spin arrow angles. Blender has the
+    bpy.ops.transform.rotate() function and the bpy.data.collections.rotation_euler
+    parameter in 3D objects, and their usage should be made clear in future versions.
+    Both work with radians instead of angles, so numpy is used to avoid accumulating
+    lag when rotating by pi times x.
+
+    Attributes
+    ----------
+    number_of_spins : [int]
+        the spin array dimensions, e.g. [3,5,2]
+
+    TODO: Color should change dynamically when the arrow changes direction."""
+
+    def __init__(self,number_of_spins):
+        self.spins_array = number_of_spins
         bobject.select_all(action="DESELECT")
         self.value_list = []
     
-    def CollectionRotator(self,tensor,axis,phase_shift):
-        for x in np.nditer(tensor, order="C"):
+    def CollectionRotator(self,operator,axis,phase_shift):
+        """Rotates spin arrows according to the values inside the operator array."""
+        axis = axis.lower()
+        for x in np.nditer(operator, order="C"): # np.nditer = numpy's n-dimension iterator
             self.value_list.append(x)
             print(x)
         i = 0
-        for o in collections["Spin Arrows"].objects:
-            #o.rotation_euler = self.value_list[i]+phase_shift
-            i += 1
+        if axis == "x":    
+            for o in collections["Spin Arrows"].objects:
+                o.rotation_euler = (self.value_list[i],0.0,0.0)#+phase_shift
+                i += 1
+        elif axis == "y":
+            for o in collections["Spin Arrows"].objects:
+                o.rotation_euler = (0.0,self.value_list[i],0.0)#+phase_shift
+                i += 1
+        else:
+            for o in collections["Spin Arrows"].objects:
+                o.rotation_euler = (0.0,0.0,self.value_list[i])#+phase_shift
+                i += 1
+
+#        for x in np.nditer(operator, order="C"):
+#            self.value_list.append(x)
+#            print(x)
+#        i = 0
+##        for o in collections["Spin Arrows"].objects:
+##            o.rotation_euler = self.value_list[i]+phase_shift
+##            i += 1
 #            bobject.select_all(action="DESELECT")
 #            #print(self.value_list[i])
 #            o.select_set(True)

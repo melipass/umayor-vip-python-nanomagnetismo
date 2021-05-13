@@ -5,6 +5,22 @@ bobject = bpy.ops.object
 collections = bpy.data.collections
 
 class Generator():
+    """Populates the scene with spin objects.
+    
+    This class contains everything related to the 3D object instantiation within Blender.
+    In order to programatically create an array of spins, every axis is taken care of independently.
+    
+    Attributes
+    ----------
+    number_of_spins : [int]
+        the spin array dimensions, e.g. [3,5,2]
+    electron_radius : int
+        the radius the spin sphere object will have in blender
+    distance_between_spins : int
+        the distance that will exist between each spin, wheter they're in the x, y or z axis
+    """
+
+
     def __init__(self,number_of_spins,electron_radius,distance_between_spins):
         self.spins = number_of_spins
         self.er = electron_radius
@@ -12,6 +28,10 @@ class Generator():
         # self.arrow_path = bpy.path.abspath("//arrow.obj") # file location relative to the .blend project folder
 
     def ClearScene(self):
+        """Deletes every object in the scene, including the camera.
+        
+        BUG: When actions are undone in Blender's GUI, the StructRNA is removed.
+        TODO: Only delete spin objects."""
         bobject.select_all(action="SELECT")
         bobject.delete()
         for c in scene.collection.children:

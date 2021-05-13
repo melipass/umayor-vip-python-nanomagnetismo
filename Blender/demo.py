@@ -7,7 +7,7 @@ import tensor_operators, generator, rotator
 """
 
 # variables
-spins = [5,1,1] # spin rows per axis (x,y,z)
+spins = [5,2,1] # spin rows per axis (x,y,z)
 er = 3 # electron radius
 dbs = 6 # distance between spins
 

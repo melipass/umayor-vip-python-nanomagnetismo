@@ -3,6 +3,12 @@ import random
 import decimal
 
 class TensorOperators():
+    """Operators for pre-defined nanomagnetism phenomena.
+
+    All methods within this class are meant to represent a specific
+    nanomagnetic configuration and are used to rotate the spins array
+    accordingly. The default state of an operator instance is paramagnetism.
+    """
     def __init__(self,spins_array):
         self.spins_array = spins_array
         self.spins_tensor = np.zeros((spins_array[0],spins_array[1],spins_array[2]))
