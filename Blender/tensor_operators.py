@@ -51,6 +51,6 @@ class TensorOperators():
           for y in range(self.spins_array[1]):
                 for z in range(self.spins_array[2]):
                    
-                        if(vec_1*M):
+                        if(vec_1.dot(M)):
                             self.spins_tensor[x,y,z] = spin_direction
     
