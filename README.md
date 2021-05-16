@@ -1,6 +1,11 @@
 ![Universidad Mayor and Vertically Integrated Projects logo](umayor-vip-header.png)
 
+<p align="center">
+<img src="animation.gif" width="70%">
+</p>
+
 # umayor-vip-python-nanomagnetismo
+
 <p align="center">
 <img src="Blender/paramagnetism.png" width="70%">
 </p>
