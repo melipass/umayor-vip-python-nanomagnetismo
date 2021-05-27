@@ -50,3 +50,11 @@ rot.SpinsRotator(op.spins_tensor,"z",0)
 for arrow in arrows:
     arrow.keyframe_insert(data_path = "rotation_euler", frame = 150)
     arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0].keyframe_insert(data_path="default_value", frame = 150)
+
+op.OperationMatrix()
+rot.SpinsRotator(op.spins_tensor, "z", 0)
+for arrow in arrows:
+    arrow.keyframe_insert(data_path = "rotation_euler", frame = 170)
+    arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0].keyframe_insert(data_path="default_value", frame = 170)
+    arrow.keyframe_insert(data_path = "rotation_euler", frame = 180)
+    arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0].keyframe_insert(data_path="default_value", frame = 180)
