@@ -1,5 +1,4 @@
 import bpy, bmesh, random
-# shorten text to work with
 scene = bpy.context.window.scene
 bobject = bpy.ops.object
 collections = bpy.data.collections
