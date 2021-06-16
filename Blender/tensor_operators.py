@@ -33,6 +33,7 @@ class TensorOperators():
                     else:
                         self.spins_tensor[x, y, z] = spin_direction+np.pi
                     i += 1
+        return self.spins_tensor
 
     def Paramagnetism(self):
         random.seed()
@@ -40,6 +41,7 @@ class TensorOperators():
             for y in range(self.spins_array[1]):
                 for z in range(self.spins_array[2]):
                     self.spins_tensor[x, y, z] = random.uniform(0, 2*np.pi)
+        return self.spins_tensor
 
     def OperationMatrix(self, spin_direction):
         M = np.matrix(spin_direction)
@@ -57,3 +59,4 @@ class TensorOperators():
                         self.spins_tensor[x, y, z] = spin_direction
                     else:
                         self.spins_tensor[x, y, z] = spin_direction
+        return self.spins_tensor
