@@ -141,3 +141,4 @@ dmypy.json
 .pyre/
 >>>>>>> ce60f2cff0db957cdccbf9701648e500df7c6760
 *.mp4
+*.webm

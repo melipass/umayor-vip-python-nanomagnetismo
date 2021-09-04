@@ -8,7 +8,7 @@ import stage
     context -> window -> scene -> collection -> objects -> meshes
 """
 # variables
-spins = [3, 2, 2]  # spin rows per axis (x,y,z)
+spins = [5, 1, 1]  # spin rows per axis (x,y,z)
 er = 3  # electron radius
 dbs = 6  # distance between spins
 
@@ -22,11 +22,13 @@ ani.ClearAnimations()
 
 #  animation
 
-ani.ArrowAnimation(op.Ferromagnetism(0), 0)
-ani.ArrowAnimation(op.Ferromagnetism(np.pi), 30)
-ani.ArrowAnimation(op.Ferromagnetism(0), 60)
-ani.ArrowAnimation(op.Ferromagnetism(np.pi/2), 90)
-ani.ArrowAnimation(op.Ferromagnetism(3*np.pi/2), 120)
-ani.ArrowAnimation(op.Paramagnetism(), 150)
+ani.ArrowAnimation(op.Ferromagnetism(0), 0, axis="x")
+ani.ArrowAnimation(op.Ferromagnetism(np.pi), 120, axis="x")
+ani.ArrowAnimation(op.Antiferromagnetism(0), 240, axis="x")
+ani.ArrowAnimation(op.Antiferromagnetism(np.pi), 360, axis="x")
+ani.ArrowAnimation(op.Paramagnetism(), 480, axis="x")
+ani.ArrowAnimation(op.Paramagnetism(), 480, axis="z")
+ani.ArrowAnimation(op.Paramagnetism(), 600, axis="x")
+ani.ArrowAnimation(op.Paramagnetism(), 600, axis="z")
 
 stage = stage.Stage()

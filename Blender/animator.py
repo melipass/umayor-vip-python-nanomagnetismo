@@ -14,7 +14,7 @@ class Animator():
         self.arrows = bpy.data.collections["Spin Arrows"].objects
 
     def ArrowAnimation(self, objective_state_operator, keyframe,
-                       delta=10, delay=0, phase_shift=0, axis="z"):
+                       delta=60, delay=0, phase_shift=0, axis="z"):
         self.rot.SpinsRotator(objective_state_operator, axis, phase_shift)
         d_p_a = "rotation_euler"
         d_p_c = "default_value"

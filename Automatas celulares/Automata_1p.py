@@ -25,6 +25,8 @@ cmap = mpl.colors.ListedColormap(['r', 'k'])
 bounds = [0., 0.5, 1.]
 norm = mpl.colors.BoundaryNorm(bounds, cmap.N)
 
+matrices = []
+
 #%%Bordes, aplicación de la Regla
 for iT in range(times):
     for f in range(filas):
@@ -52,6 +54,7 @@ for iT in range(times):
             if sum_mat_X == 0:
                 mat_Z[f,c] = -1 * mat_Y[f,c]
     print("==============A================")
+    matrices.append([mat_Y, mat_X, mat_Z])
     print(mat_Y)
     print("==")
     print(mat_X)
@@ -60,7 +63,7 @@ for iT in range(times):
     
     mat_Y = mat_X
     mat_X = mat_Z
-    
+    matrices.append([mat_Y, mat_X, mat_Z])
     print("==============B================")
     print(mat_Y)
     print("==")
@@ -72,3 +75,6 @@ for iT in range(times):
 
     #Se grafican las Matrices
     plt.show()
+
+for matriz in matrices:
+    print(matriz)

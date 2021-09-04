@@ -76,8 +76,8 @@ class Stage():
             bobject.mode_set()
         scene.collection.children.link(collections.new(name='Camera'))
         bpy.ops.object.camera_add(enter_editmode=False, align='VIEW',
-                                  location=(35, -120, 33),
-                                  rotation=(1.309, 0, 0),
+                                  location=(38, 35, 215),
+                                  rotation=(0, 0, 0),
                                   scale=(1, 1, 1))
         bobject.move_to_collection(collection_index=collections
                                    .keys().index('Camera')+5)
