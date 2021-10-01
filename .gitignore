@@ -7,6 +7,7 @@
 *.code-workspace
 *.history/
 
+
 # Blender
 *.blend[0-9]
 
@@ -142,3 +143,6 @@ dmypy.json
 >>>>>>> ce60f2cff0db957cdccbf9701648e500df7c6760
 *.mp4
 *.webm
+
+# Godot Python adddon
+Godot/interactive-spin-matrix/addons/*
