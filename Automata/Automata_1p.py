@@ -53,8 +53,8 @@ for iT in range(times):
             sum_mat_X = mat_X[f_mas,c]+mat_X[f_menos,c]+mat_X[f,c_mas]+mat_X[f,c_menos]
             if sum_mat_X == 0:
                 mat_Z[f,c] = -1 * mat_Y[f,c]
+                print(mat_Z)
     print("==============A================")
-    matrices.append([mat_Y, mat_X, mat_Z])
     print(mat_Y)
     print("==")
     print(mat_X)
@@ -63,7 +63,6 @@ for iT in range(times):
     
     mat_Y = mat_X
     mat_X = mat_Z
-    matrices.append([mat_Y, mat_X, mat_Z])
     print("==============B================")
     print(mat_Y)
     print("==")

@@ -7,6 +7,7 @@
 *.code-workspace
 *.history/
 
+
 # Blender
 *.blend[0-9]
 
