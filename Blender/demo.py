@@ -30,5 +30,7 @@ ani.ArrowAnimation(op.Paramagnetism(), 480, axis="x")
 ani.ArrowAnimation(op.Paramagnetism(), 480, axis="z")
 ani.ArrowAnimation(op.Paramagnetism(), 600, axis="x")
 ani.ArrowAnimation(op.Paramagnetism(), 600, axis="z")
+ani.ArrowAnimation(op.OperationMatrix(), 640, axis="x")
+ani.ArrowAnimation(op.OperationMatrix(), 640, axis="z")
 
 stage = stage.Stage()
