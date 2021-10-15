@@ -77,3 +77,25 @@ for iT in range(times):
 
 for matriz in matrices:
     print(matriz)
+
+
+###Animacion del automata 
+
+automaton_size = 100
+automata1 = Automata(automaton_size)
+nb_frames = 100
+
+img = Image.new('RGB', (automaton_size, nb_frames), 'white')
+draw = ImageDraw.Draw(img)
+fig, ax = plt.subplots(dpi=50, figsize=(5, 5))
+####im = ax.imshow(img)###
+plt.axis('off')
+
+def animate(i, automaton, draw, img):
+    space_img = Image.fromarray(automata1.space.reshape(1, automaton_size)*255)
+    img.paste(space_img, (0, i))####mask=space_img
+    ax.imshow(img)
+    automaton.update(rule_x)
+
+ani = animation.FuncAnimation(fig, animate, frames=nb_frames, interval=1, 
+                              fargs=[automata1, draw, img])
