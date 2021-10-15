@@ -1,6 +1,6 @@
 import numpy as np
 import random
-
+import os
 
 class TensorOperators():
     """Operators for pre-defined nanomagnetism phenomena.
@@ -13,7 +13,6 @@ class TensorOperators():
         self.spins_array = spins_array
         self.spins_tensor = np.zeros((spins_array[0], spins_array[1],
                                       spins_array[2]))
-        #  print(self.spins_tensor)
         self.Paramagnetism()
 
     def Ferromagnetism(self, spin_direction):
@@ -41,6 +40,19 @@ class TensorOperators():
             for y in range(self.spins_array[1]):
                 for z in range(self.spins_array[2]):
                     self.spins_tensor[x, y, z] = random.uniform(0, 2*np.pi)
+        return self.spins_tensor
+
+    def AutomataMatrix(self, matrix):
+        row_number = 0
+        for row in matrix:
+            col_number = 0
+            for col in row:
+                if col == -1:
+                    self.spins_tensor[row_number, col_number, 0] = np.pi
+                else:
+                    self.spins_tensor[row_number, col_number, 0] = 0
+                col_number = col_number + 1
+            row_number = row_number + 1
         return self.spins_tensor
 
     def OperationMatrix(self, spin_direction):
