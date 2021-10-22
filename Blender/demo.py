@@ -4,12 +4,23 @@ import generator
 import animator
 import stage
 import os
+import json
 
 """
     context -> window -> scene -> collection -> objects -> meshes
 """
+
+# loading matrices
+matrices = []
+folder = os.path.dirname(os.path.realpath(__file__))[:-13] + 'out\\'
+for i in range(len(os.listdir(folder))):
+    matrices.append(np.loadtxt(folder + 'matrix-{}.txt'.format(i), delimiter=","))
+
+# load config
+config = json.load(open(folder[:-5] + '\\config.json'))
+
 # variables
-spins = [4, 4, 1]  # spin rows per axis (x,y,z)
+spins = [len(matrices[0]), len(matrices[0][0]), 1]  # spin rows per axis (x,y,z)
 er = 3  # electron radius
 dbs = 6  # distance between spins
 
@@ -21,16 +32,21 @@ op = tensor_operators.TensorOperators(spins)
 ani = animator.Animator(spins)
 ani.ClearAnimations()
 
-matrices = []
-folder = os.path.dirname(os.path.realpath(__file__))[:-13] + 'out\\'
-for i in range(len(os.listdir(folder))):
-    matrices.append(np.loadtxt(folder + 'matrix-{}.txt'.format(i), delimiter=","))
 
 i = 0
 for matrix in matrices:
     print(matrix)
-    ani.ArrowAnimation(op.AutomataMatrix(matrix), i, axis="x")
-    i = i + 60
+    ani.ArrowAnimation(op.AutomataMatrix(matrix), config['keyframes'][i],
+                       delta = config['delta'][i], axis="x")
+    i = i + 1
+
+
+
+
+
+
+
+
 
 #  animation
 

@@ -148,3 +148,4 @@ dmypy.json
 Godot/interactive-spin-matrix/addons/*
 Godot/blender-export/addons/*
 Godot/blender-export/.import/*
+Blender/test.py
