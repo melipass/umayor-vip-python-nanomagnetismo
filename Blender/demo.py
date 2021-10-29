@@ -37,7 +37,7 @@ i = 0
 for matrix in matrices:
     print(matrix)
     ani.ArrowAnimation(op.AutomataMatrix(matrix), config['keyframes'][i],
-                       delta = config['delta'][i], axis="x")
+                       delta = config['delta'][i], axis="z")
     i = i + 1
 
 

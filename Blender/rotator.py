@@ -45,10 +45,10 @@ class Rotator():
                 o.rotation_euler = (0.0, self.value_list[i]+phase_shift, 0.0)
                 self.SpinsColor(o, 1, i)
                 i += 1
-        else:
+        elif axis == "z":
             for o in collections["Spin Arrows"].objects:
-                o.rotation_euler = (0.0, 0.0, self.value_list[i]+phase_shift)
-                self.SpinsColor(o, 2, i)
+                o.rotation_euler = (self.value_list[i]+phase_shift+np.pi/2, 0.0, 0.0)
+                self.SpinsColor(o, 0, i)
                 i += 1
 
     def SpinsColor(self, o, axis, i):

@@ -15,13 +15,14 @@ class Animator():
 
     def ArrowAnimation(self, objective_state_operator, keyframe,
                        delta=60, delay=0, phase_shift=0, axis="z"):
-        self.rot.SpinsRotator(objective_state_operator, axis, phase_shift)
         d_p_a = "rotation_euler"
         d_p_c = "default_value"
         for arrow in self.arrows:
             arrow.keyframe_insert(data_path=d_p_a, frame=keyframe)
             arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0]\
                 .keyframe_insert(data_path=d_p_c, frame=keyframe)
+        self.rot.SpinsRotator(objective_state_operator, axis, phase_shift)
+        for arrow in self.arrows:
             arrow.keyframe_insert(data_path=d_p_a, frame=keyframe + delta)
             arrow.active_material.node_tree.nodes["Principled BSDF"].inputs[0]\
                 .keyframe_insert(data_path=d_p_c, frame=keyframe + delta)
