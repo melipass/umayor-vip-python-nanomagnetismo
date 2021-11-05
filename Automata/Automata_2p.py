@@ -102,7 +102,7 @@ for it in range(time):
     #print(mat_Y);
     mat_Y=np.copy(mat_X)                        
     mat_X=np.copy(mat_Z)
-    nameMatrix='matX_'+str(it)+'.txt'
+    nameMatrix='matrix-'+str(it)+'.txt'
     np.savetxt('../Blender/out/'+nameMatrix, mat_X.astype(int), fmt='%i', delimiter=",")
 
 
