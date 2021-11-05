@@ -8,9 +8,9 @@ import matplotlib as mpl
 
 ##############################
 ### tamaño de la matrix
-filas = columnas = 4
+filas = columnas = 8 # debe ser 2^n
 ### Tiempo de iteracion o cantidad de matrices  
-time = 6
+time = 20
 
 #Generacion de matriz aleatoria. >=0 <2
 

@@ -21,8 +21,8 @@ config = json.load(open(folder[:-5] + '\\config.json'))
 
 # variables
 spins = [len(matrices[0]), len(matrices[0][0]), 1]  # spin rows per axis (x,y,z)
-er = 3  # electron radius
-dbs = 6  # distance between spins
+er = 5  # electron radius
+dbs = 3  # distance between spins
 
 # classes
 gen = generator.Generator(spins, er, dbs)
@@ -34,10 +34,20 @@ ani.ClearAnimations()
 
 
 i = 0
+keyframe = config['keyframes'][i]
+delta = config['delta'][0]
 for matrix in matrices:
     print(matrix)
-    ani.ArrowAnimation(op.AutomataMatrix(matrix), config['keyframes'][i],
+    try:
+        ani.ArrowAnimation(op.AutomataMatrix(matrix), config['keyframes'][i],
                        delta = config['delta'][i], axis="z")
+        keyframe = config['keyframes'][i]
+        delta = config['delta'][i]
+    except:
+        keyframe += 30
+        delta = 30
+        ani.ArrowAnimation(op.AutomataMatrix(matrix), keyframe,
+                       delta = delta, axis="z")
     i = i + 1
 
 
