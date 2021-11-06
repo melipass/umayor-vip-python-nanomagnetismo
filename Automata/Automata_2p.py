@@ -1,114 +1,54 @@
 import numpy as np
-
-################estas son las librerias para hacer graficas
-
 import matplotlib.pyplot as plt
-
 import matplotlib as mpl
 
-##############################
-### tamaño de la matrix
-filas = columnas = 8 # debe ser 2^n
-### Tiempo de iteracion o cantidad de matrices  
-time = 20
 
-#Generacion de matriz aleatoria. >=0 <2
+rows = columns = 16 # must be N in 2^N
+time = 20 # amount of matrices
 
-mat_X = np.random.randint(0,2,size=(filas, columnas))
+# random matrix generation
+mat_X = np.random.randint(0, 2, size=(rows, columns))
 
 
-#Cambio ceros a "-1"
-
-for f in range(filas):
-
-    for c in range(columnas):
-
-  # print(f,c, matrix[f,c])
-
-     
-
+# Zeros as -1
+for f in range(rows):
+    for c in range(columns):
       if mat_X[f,c] == 0:
-
         mat_X[f,c] = -1
 
-
-#truco, alternative a for
-
+# Alternative to using a for loop:
 # matriz = np.matrix(np.where(matriz>0,matriz,-1))
 
 mat_Y = np.copy(mat_X)
-
 mat_Z = np.copy(mat_X)
 
-
-##### AQUI SE DEFINE SOLO DOS COLORES PARA QUE -1 Y 1 TOME ROJO O NEGRO
-
+# -1 as red and 1 as black in matplotlib's matrix
 cmap = mpl.colors.ListedColormap(['r', 'k'])
-
 bounds = [0., 0.5, 1.]
-
 norm = mpl.colors.BoundaryNorm(bounds, cmap.N)
 
-## ESTA ULTIMA ES PARA DEFINIR SOLO LOS BORDES.
-
-#############################
-
 for it in range(time):
-
-    for f in range(filas):
-
-        f_mas = f+1
-
-        f_menos = f-1
-
+    for r in range(rows):
+        r_plus = r+1
+        r_minus = r-1
         sum_mat_X = 0
-
-        for c in range(columnas):
-
-            c_mas = c+1
-
-            c_menos = c-1
-
-           
-            if f_mas == filas:
-
-                f_mas = 0
-             
-            if f_menos == -1:
-
-                f_menos = filas-1
-
-            if c_mas == columnas:
-
-                c_mas = 0
-
-            if c_menos == -1:
-
-                c_menos = columnas-1
-
-            # print(f_mas,f_menos,c_mas,c_menos)
-
-            sum_mat_X = mat_X[f_mas,c]+mat_X[f_menos,c]+mat_X[f,c_mas]+mat_X[f,c_menos]
-
-            #print(sum_mat_X)
-           
+        for c in range(columns):
+            c_plus = c+1
+            c_minus = c-1
+            if r_plus == rows:
+                r_plus = 0
+            if r_minus == -1:
+                r_minus = rows-1
+            if c_plus == columns:
+                c_plus = 0
+            if c_minus == -1:
+                c_minus = columns-1
+            sum_mat_X = (mat_X[r_plus, c] + mat_X[r_minus, c]
+                         + mat_X[r, c_plus] + mat_X[r, c_minus])
             if sum_mat_X == 0:
-
-                mat_Z[f,c] = -1 * mat_Y[f,c]
-
-    #print("mat_X")
-    #print(mat_X);
-    #print("mat_Y")
-    #print(mat_Y);
-    mat_Y=np.copy(mat_X)                        
+                mat_Z[r, c] = -1 * mat_Y[r, c]
+    mat_Y=np.copy(mat_X)
     mat_X=np.copy(mat_Z)
-    nameMatrix='matrix-'+str(it)+'.txt'
-    np.savetxt('../Blender/out/'+nameMatrix, mat_X.astype(int), fmt='%i', delimiter=",")
-
-
-
-
-
-
-
-#################################################
+    matrix_name = 'matrix-' + str(it) + '.txt'
+    np.savetxt('../Blender/out/' + matrix_name, mat_X.astype(int),
+               fmt='%i', delimiter=",")

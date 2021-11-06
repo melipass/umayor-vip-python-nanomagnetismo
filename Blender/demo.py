@@ -21,7 +21,7 @@ config = json.load(open(folder[:-5] + '\\config.json'))
 
 # variables
 spins = [len(matrices[0]), len(matrices[0][0]), 1]  # spin rows per axis (x,y,z)
-er = 5  # electron radius
+er = 4  # electron radius
 dbs = 3  # distance between spins
 
 # classes
