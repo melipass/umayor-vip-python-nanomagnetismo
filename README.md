@@ -25,19 +25,11 @@ There's still a lot of work to be done and any contribution is appreciated. Feel
 Watch it here: https://youtu.be/GGVQO_T5GWs?t=701
   
 ## Acerca de este repo
-El código que se encuentra dentro de este repositorio corresponde al código que realicé durante el proyecto VIP de **Animaciones en Python para aplicaciones en nanomagnetismo** de la Universidad Mayor. [Leer más](https://cib.umayor.cl/news/proyectos-vip-la-herramienta-que-fomenta-la-vinculaci%C3%B3n-entre-el-pregrado-y-la-investigaci%C3%B3n-que-se-realiza-en-la-u-mayor). Importante considerar que el proyecto está en una etapa de desarrollo inicial.
-
-Para hacer que el código funcione dentro de un proyecto de Blender, debes almacenar los archivos en la misma carpeta que el archivo .blend y agregar el siguiente texto en la ventana del proyecto llamada Text Editor, de la pestaña Scripting. Carga el archivo demo.py.
-
-```python
-import bpy
-import os
-import sys
-
-sys.path.append(bpy.path.abspath("//"))
-filename = os.path.join(os.path.dirname(bpy.data.filepath), "demo.py") 
-exec(compile(open(filename).read(), filename, 'exec'))
-```
+El contenido que se encuentra dentro de este repositorio corresponde al código realizado durante el proyecto VIP de **Animaciones en Python para aplicaciones en nanomagnetismo** de la Universidad Mayor. [Leer más](https://cib.umayor.cl/news/proyectos-vip-la-herramienta-que-fomenta-la-vinculaci%C3%B3n-entre-el-pregrado-y-la-investigaci%C3%B3n-que-se-realiza-en-la-u-mayor). Su propósito es ayudar a que investigadores creen animaciones acerca de espines en Blender.
+      
+Se ha dejado una demo en la carpeta ``src``. Esa demo crea una animación basada en el output de un algoritmo autómata celular que escribe matrices 2D de espines en la carpeta ``matrices``, permitiendo la configuración de la animación en el archivo ``config.json``.
+      
+Hay bastantes cosas que se pueden trabajar y cualquier contribución es agradecida. Avísanos si usas este código en algún proyecto! 😊
 
 <p align="center">
 <img src="images/paramagnetism.png" width="70%">
