@@ -1,14 +1,10 @@
-![Universidad Mayor and Vertically Integrated Projects logo](umayor-vip-header.png)
+![Universidad Mayor and Vertically Integrated Projects logo](images/umayor-vip-header.png)
 
 <p align="center">
-<img src="animation.gif" width="70%">
+<img src="images/animation.gif" width="70%">
 </p>
 
 # umayor-vip-python-nanomagnetismo
-
-<p align="center">
-<img src="Blender/paramagnetism.png" width="70%">
-</p>
 
 ## About this repo
 This repository contains Python code I wrote during Universidad Mayor's Vertically Integrated Project **Python animations for applications in nanomagnetism**. [Read more](https://cib.umayor.cl/en/news/vip-projects-the-tool-that-fosters-the-link-between-undergraduate-and-research-carried-out-in-the-u-mayor).
@@ -24,9 +20,15 @@ sys.path.append(bpy.path.abspath("//"))
 filename = os.path.join(os.path.dirname(bpy.data.filepath), "demo.py") 
 exec(compile(open(filename).read(), filename, 'exec'))
 ```
-<p align="center">  
-<a href="https://www.youtube.com/watch?v=k4e3EGC3x6E" target="_blank"><img src="https://yt-embed.herokuapp.com/embed?v=k4e3EGC3x6E"></a>
-</p>
+
+## Featured in:
+
+<table>
+  <tr>
+    <td><img src="images/ruta-del-pensamiento.png" width="40%></td>
+    <td><a href="https://youtu.be/GGVQO_T5GWs?t=701"><img src="images/video-thumbnail.jpg" width="60%"></a></td>
+   </tr> 
+</table>
 
 ## Acerca de este repo
 El código que se encuentra dentro de este repositorio corresponde al código que realicé durante el proyecto VIP de **Animaciones en Python para aplicaciones en nanomagnetismo** de la Universidad Mayor. [Leer más](https://cib.umayor.cl/news/proyectos-vip-la-herramienta-que-fomenta-la-vinculaci%C3%B3n-entre-el-pregrado-y-la-investigaci%C3%B3n-que-se-realiza-en-la-u-mayor). Importante considerar que el proyecto está en una etapa de desarrollo inicial.
@@ -42,3 +44,7 @@ sys.path.append(bpy.path.abspath("//"))
 filename = os.path.join(os.path.dirname(bpy.data.filepath), "demo.py") 
 exec(compile(open(filename).read(), filename, 'exec'))
 ```
+
+<p align="center">
+<img src="images/paramagnetism.png" width="70%">
+</p>
