@@ -1,5 +1,5 @@
 import bpy
-
+import os
 
 scene = bpy.context.window.scene
 bobject = bpy.ops.object
@@ -93,7 +93,8 @@ class Generator():
         # Spin arrow object(s) generation
         current_collection = collections.new(name="Spin Arrows")
         scene.collection.children.link(current_collection)
-        bpy.ops.import_scene.obj(filepath=bpy.path.abspath("..//assets//arrow.obj"))
+        # print(bpy.path.abspath("..//assets//arrow.obj"))
+        bpy.ops.import_scene.obj(filepath=os.path.dirname(os.path.realpath(__file__))[:-4] + "\\assets\\arrow.obj")
         bpy.ops.transform.resize(value=(1.0, 1.0, self.er/2))
         bobject.shade_smooth()
         self.ObjectDuplicatorX("Spin Arrows")

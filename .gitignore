@@ -143,6 +143,7 @@ dmypy.json
 >>>>>>> ce60f2cff0db957cdccbf9701648e500df7c6760
 *.mp4
 *.webm
+*.mkv
 
 # Godot Python adddon
 Godot/interactive-spin-matrix/addons/*
