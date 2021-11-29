@@ -32,5 +32,5 @@ Se ha dejado una demo en la carpeta ``src``. Esa demo crea una animación basada
 Hay bastantes cosas que se pueden trabajar y cualquier contribución es agradecida. Avísanos si usas este código en algún proyecto! 😊
 
 <p align="center">
-<img src="images/paramagnetism.png" width="70%">
+      <img src="images/automata.gif"><br><a href="https://www.youtube.com/watch?v=jqwrRr0v59k">https://www.youtube.com/watch?v=jqwrRr0v59k</a>
 </p>
