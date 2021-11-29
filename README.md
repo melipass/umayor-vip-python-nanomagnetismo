@@ -30,6 +30,8 @@ exec(compile(open(filename).read(), filename, 'exec'))
    </tr> 
 </table>
 
+[Click here to watch](https://youtu.be/GGVQO_T5GWs?t=701)
+  
 ## Acerca de este repo
 El código que se encuentra dentro de este repositorio corresponde al código que realicé durante el proyecto VIP de **Animaciones en Python para aplicaciones en nanomagnetismo** de la Universidad Mayor. [Leer más](https://cib.umayor.cl/news/proyectos-vip-la-herramienta-que-fomenta-la-vinculaci%C3%B3n-entre-el-pregrado-y-la-investigaci%C3%B3n-que-se-realiza-en-la-u-mayor). Importante considerar que el proyecto está en una etapa de desarrollo inicial.
 
