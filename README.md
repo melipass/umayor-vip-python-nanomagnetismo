@@ -7,7 +7,7 @@
 # 3D spins animations in Blender
 
 ## About this repo
-This repository contains Python code written during Universidad Mayor's Vertically Integrated Project **Python animations for applications in nanomagnetism**. [Read more](https://cib.umayor.cl/en/news/vip-projects-the-tool-that-fosters-the-link-between-undergraduate-and-research-carried-out-in-the-u-mayor). It is meant to help physics researchers create spins animations in Blender.
+This repository contains code written during Universidad Mayor's Vertically Integrated Project **Python animations for applications in nanomagnetism**. [Read more](https://cib.umayor.cl/en/news/vip-projects-the-tool-that-fosters-the-link-between-undergraduate-and-research-carried-out-in-the-u-mayor). It is meant to help physics researchers create spins animations in Blender.
 
 A demo has been left in the ``src`` folder. It creates an animation based on the output of a cellular automata algorithm that writes 2D spins matrices into the ``matrices`` folder, using keyframe information from the ``config.json`` file.
 
