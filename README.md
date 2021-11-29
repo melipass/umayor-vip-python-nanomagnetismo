@@ -11,7 +11,7 @@ This repository contains Python code written during Universidad Mayor's Vertical
 
 A demo has been left in the ``src`` folder. It creates an animation based on the output of a cellular automata algorithm that writes 2D spins matrices into the ``matrices`` folder, using keyframe information from the ``config.json`` file.
 
-There's still a lot of work to be done and any contribution is appreciated. Feel free to use this in a project and please let us know if you do!
+There's still a lot of work to be done and any contribution is appreciated. Feel free to use this in a project and please let us know if you do! 
 
 ## Featured in:
 
